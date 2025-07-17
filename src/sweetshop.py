@@ -12,3 +12,5 @@ class SweetShop:
         return [sweet for sweet in self.sweets if sweet.name.lower() == name.lower()]
     def search_by_category(self, category):
         return [sweet for sweet in self.sweets if sweet.category.lower() == category.lower()]
+    def search_by_price_range(self, min_price, max_price):
+        return [sweet for sweet in self.sweets if min_price <= sweet.price <= max_price]
