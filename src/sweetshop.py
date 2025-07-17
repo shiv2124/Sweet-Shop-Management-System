@@ -8,3 +8,5 @@ class SweetShop:
         self.sweets = [sweet for sweet in self.sweets if sweet.id != sweet_id]
     def view_sweets(self):
         return self.sweets
+    def search_by_name(self, name):
+        return [sweet for sweet in self.sweets if sweet.name.lower() == name.lower()]
