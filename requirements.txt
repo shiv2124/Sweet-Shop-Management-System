@@ -1,1 +1,1 @@
-# No external packages used; standard Python libraries only
+# No external packages used; Only standard Python libraries 
