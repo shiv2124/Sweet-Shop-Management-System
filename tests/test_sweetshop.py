@@ -48,6 +48,19 @@ class TestSweetShop(unittest.TestCase):
         result = self.shop.search_by_name("Gulab Jamun")
         self.assertEqual(len(result), 1)
         self.assertEqual(result[0].id, 1002)
+    
+    def test_search_by_category(self):
+        sweet1 = Sweet(id=1001, name="Kaju Katli", category="Nut-Based", price=50, quantity=20)
+        sweet2 = Sweet(id=1002, name="Gulab Jamun", category="Milk-Based", price=10, quantity=50)
+        sweet3 = Sweet(id=1003, name="Badam Barfi", category="Nut-Based", price=60, quantity=25)
+
+        self.shop.add_sweet(sweet1)
+        self.shop.add_sweet(sweet2)
+        self.shop.add_sweet(sweet3)
+
+        result = self.shop.search_by_category("Nut-Based")
+        self.assertEqual(len(result), 2)
+        self.assertTrue(all(sweet.category == "Nut-Based" for sweet in result))
 
 if __name__ == '__main__':
     unittest.main()

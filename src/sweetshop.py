@@ -10,3 +10,5 @@ class SweetShop:
         return self.sweets
     def search_by_name(self, name):
         return [sweet for sweet in self.sweets if sweet.name.lower() == name.lower()]
+    def search_by_category(self, category):
+        return [sweet for sweet in self.sweets if sweet.category.lower() == category.lower()]
