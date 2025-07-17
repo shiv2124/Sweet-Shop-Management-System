@@ -22,3 +22,8 @@ class SweetShop:
                     return
                 else:
                     raise ValueError("Insufficient stock for purchase")
+    def restock_sweet(self, sweet_id, quantity):
+        for sweet in self.sweets:
+            if sweet.id == sweet_id:
+                sweet.quantity += quantity
+                return

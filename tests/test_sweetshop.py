@@ -88,6 +88,13 @@ class TestSweetShop(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             self.shop.purchase_sweet(1002, 10)
-            
+    
+    def test_restock_sweet(self):
+        sweet = Sweet(id=1003, name="Rasgulla", category="Milk-Based", price=40, quantity=10)
+        self.shop.add_sweet(sweet)
+
+        self.shop.restock_sweet(1003, 15)
+        self.assertEqual(self.shop.sweets[0].quantity, 25)
+
 if __name__ == '__main__':
     unittest.main()
