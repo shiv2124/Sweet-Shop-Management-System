@@ -74,6 +74,20 @@ class TestSweetShop(unittest.TestCase):
         result = self.shop.search_by_price_range(20, 50)
         self.assertEqual(len(result), 2)
         self.assertTrue(all(20 <= sweet.price <= 50 for sweet in result))
+    
+    def test_purchase_sweet_success(self):
+        sweet = Sweet(id=1001, name="Kaju Katli", category="Nut-Based", price=50, quantity=10)
+        self.shop.add_sweet(sweet)
 
+        self.shop.purchase_sweet(1001, 3)
+        self.assertEqual(self.shop.sweets[0].quantity, 7)
+
+    def test_purchase_insufficient_stock(self):
+        sweet = Sweet(id=1002, name="Gulab Jamun", category="Milk-Based", price=10, quantity=5)
+        self.shop.add_sweet(sweet)
+
+        with self.assertRaises(ValueError):
+            self.shop.purchase_sweet(1002, 10)
+            
 if __name__ == '__main__':
     unittest.main()
